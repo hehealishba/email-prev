@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Email Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .email-draft {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Business Email Generator</h1>
+
+    <form method="POST" class="form-container">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" id="subject" required>
+
+        <label for="recipient_name">Recipient's Name</label>
+        <input type="text" name="recipient_name" id="recipient_name" required>
+
+        <label for="purpose">Purpose</label>
+        <input type="text" name="purpose" id="purpose" required>
+
+        <label for="key_points">Key Points to Include</label>
+        <textarea name="key_points" id="key_points" rows="4" required></textarea>
+
+        <label for="tone">Tone</label>
+        <select name="tone" id="tone">
+            <option value="formal">Formal</option>
+            <option value="semi-formal">Semi-Formal</option>
+            <option value="casual">Casual</option>
+        </select>
+
+        <button type="submit">Generate Email</button>
+    </form>
+
+    {% if email_draft %}
+        <div class="email-draft">
+            <h3>Generated Email Draft:</h3>
+            <pre>{{ email_draft }}</pre>
+        </div>
+    {% endif %}
+
+</body>
+</html>
